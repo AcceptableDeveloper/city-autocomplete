@@ -14,13 +14,20 @@ app.listen(port, () => {
 });
 
 app.get('/', (req, res) => {
+  console.log(req.query);
+  const searchQuery = req.query.city?.toString().toLowerCase() || '';
+
   fs.readFile(path.join(__dirname, 'world-cities.txt'), 'utf8', (err, data) => {
     if (err) {
       res.status(500).send('Error reading file.');
       return;
     }
-    const cities = data.split('\n').map((city) => ({ name: city.trim() }));
-    console.log(cities); // Debug: Log the cities array to see if it's correct
+    const cities = data
+      .split('\n')
+      .map((city) => city.trim())
+      .filter((city) => city.toLowerCase().includes(searchQuery))
+      .map((city) => ({ name: city }));
+
     res.json(cities);
   });
 });
