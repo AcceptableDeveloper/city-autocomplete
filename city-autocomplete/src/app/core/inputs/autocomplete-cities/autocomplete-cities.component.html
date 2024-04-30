@@ -1,0 +1,6 @@
+<label for="cities">City:</label>
+<input (input)="handleInput($event)" type="text" #city />
+
+@if (showSpinner()) {
+<span>Loading...</span>
+}
