@@ -1,5 +1,24 @@
 <label for="cities">City:</label>
-<input (input)="handleInput($event)" type="text" #city />
+<div class="dropdown is-full-width">
+  <input
+    class="input"
+    type="text"
+    id="cities"
+    autocomplete="off"
+    (input)="handleInput($event)"
+  />
+  <div class="dropdown-menu is-paddingless is-full-width">
+    <ul
+      class="dropdown-content is-paddingless is-marginless type-ahead"
+      role="menu"
+    >
+      @for (city of cityList; track $index) {
+      <li class="dropdown-item is-clickable">{{ city }}</li>
+
+      }
+    </ul>
+  </div>
+</div>
 
 @if (showSpinner()) {
 <span>Loading...</span>

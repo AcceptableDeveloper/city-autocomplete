@@ -1,3 +1,11 @@
-:host {
-  display: block;
+ul.type-ahead {
+  li {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+    &:hover {
+      background-color: grey;
+    }
+  }
 }

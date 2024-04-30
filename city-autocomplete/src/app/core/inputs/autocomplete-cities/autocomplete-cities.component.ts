@@ -30,6 +30,7 @@ export class AutocompleteCitiesComponent implements OnInit {
 
   showSpinner = signal(false);
 
+  cityList: string[] = [];
   input = signal('');
   cities = toObservable(this.input).pipe(
     filter((query) => query.length > 3),
@@ -40,14 +41,13 @@ export class AutocompleteCitiesComponent implements OnInit {
     tap(() => this.showSpinner.set(false))
   );
 
-  ngOnInit() {
-    this.autoCompleteCitiesService.getCities().subscribe((cities) => {
-      console.log(cities);
+  ngOnInit(): void {
+    this.cities.subscribe((data) => {
+      this.cityList = data;
     });
   }
 
   handleInput(event: any): void {
-    console.log(event.target.value);
     this.input.set(event.target.value);
   }
 }
