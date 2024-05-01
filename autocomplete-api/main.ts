@@ -14,7 +14,6 @@ app.listen(port, () => {
 });
 
 app.get('/', (req, res) => {
-  console.log(req.query);
   const searchQuery = req.query.city?.toString().toLowerCase() || '';
 
   fs.readFile(path.join(__dirname, 'world-cities.txt'), 'utf8', (err, data) => {

@@ -12,7 +12,6 @@ app.listen(port, function () {
 });
 app.get('/', function (req, res) {
     var _a;
-    console.log(req.query);
     var searchQuery = ((_a = req.query.city) === null || _a === void 0 ? void 0 : _a.toString().toLowerCase()) || '';
     fs.readFile(path.join(__dirname, 'world-cities.txt'), 'utf8', function (err, data) {
         if (err) {
