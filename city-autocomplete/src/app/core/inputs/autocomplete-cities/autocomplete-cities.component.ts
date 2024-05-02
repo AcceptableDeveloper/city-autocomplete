@@ -52,9 +52,12 @@ export class AutocompleteCitiesComponent implements OnInit {
 
   loadAllCities() {
     this.showSpinner.set(true);
-    this.autoCompleteCitiesService.getAllCities().subscribe((cities) => {
-      this.cities = cities.map((city: any) => new City(city));
-      this.showSpinner.set(false);
+    this.autoCompleteCitiesService.getAllCities().subscribe({
+      next: (res: ICity[]) => {
+        this.cities = res.map((city: ICity) => new City(city));
+      },
+      error: (err: any) => console.log('Failed to retrieve cities', err),
+      complete: () => this.showSpinner.set(false),
     });
   }
 
