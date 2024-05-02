@@ -55,7 +55,7 @@ describe('AutocompleteCitiesComponent', () => {
   });
 
   it('should update input value on handleInput', () => {
-    fixture.detectChanges(); // Add this line
+    fixture.detectChanges();
 
     const inputElement = fixture.nativeElement.querySelector('input');
     const inputValue = 'City 1';
