@@ -9,24 +9,22 @@ const port = process.env.PORT || 8000;
 
 app.use(cors());
 
-app.listen(port, () => {
-  console.log(`Server is running on port ${port}`);
-});
-
-app.get('/', (req, res) => {
-  const searchQuery = req.query.city?.toString().toLowerCase() || '';
-
+app.get('/all-cities', (req, res) => {
   fs.readFile(path.join(__dirname, 'world-cities.txt'), 'utf8', (err, data) => {
     if (err) {
+      console.log('Error reading file:', err);
       res.status(500).send('Error reading file.');
       return;
     }
     const cities = data
       .split('\n')
       .map((city) => city.trim())
-      .filter((city) => city.toLowerCase().includes(searchQuery))
       .map((city) => ({ name: city }));
 
     res.json(cities);
   });
+});
+
+app.listen(port, () => {
+  console.log(`Server is running on port ${port}`);
 });

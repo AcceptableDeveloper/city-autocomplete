@@ -8,7 +8,8 @@ import { Observable } from 'rxjs';
 export class AutocompleteCitiesService {
   http = inject(HttpClient);
 
-  public getCities(query: string): Observable<any> {
-    return this.http.get<any>(`http://localhost:8000?city=${query}`);
+  public getAllCities(): Observable<any> {
+    console.log('Getting all cities');
+    return this.http.get<any>(`http://localhost:8000/all-cities`);
   }
 }

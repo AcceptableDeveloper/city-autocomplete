@@ -1,11 +1,14 @@
-ul.type-ahead {
-  li {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+input {
+  width: 20%;
+  margin: auto;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  box-shadow: none;
+}
 
-    &:hover {
-      background-color: grey;
-    }
-  }
+section {
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
