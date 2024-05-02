@@ -1,6 +1,7 @@
-export class City {
-  public readonly name?: string;
-  public readonly country?: string;
+import { ICity } from '@core/inputs/autocomplete-cities/city.interface';
+
+export class City implements ICity {
+  public readonly name!: string;
 
   constructor(data: Record<string, any>) {
     if (data) {

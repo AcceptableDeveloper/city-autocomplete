@@ -9,6 +9,7 @@ import {
 import { AutocompleteCitiesService } from '@core/inputs/autocomplete-cities/autocomplete-cities.service';
 import { City } from './city';
 import { LoadingSpinnerComponent } from '@core/loading-spinner/loading-spinner.component';
+import { ICity } from './city.interface';
 
 @Component({
   selector: 'autocomplete-cities',
@@ -40,7 +41,7 @@ import { LoadingSpinnerComponent } from '@core/loading-spinner/loading-spinner.c
 export class AutocompleteCitiesComponent implements OnInit {
   autoCompleteCitiesService = inject(AutocompleteCitiesService);
 
-  cities: City[] = [];
+  cities: ICity[] = [];
 
   input = signal('');
   showSpinner = signal(false);
