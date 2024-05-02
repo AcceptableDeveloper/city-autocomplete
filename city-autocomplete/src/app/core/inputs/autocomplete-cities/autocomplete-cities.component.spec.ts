@@ -4,6 +4,7 @@ import { AutocompleteCitiesService } from '@core/inputs/autocomplete-cities/auto
 import { LoadingSpinnerComponent } from '@core/loading-spinner/loading-spinner.component';
 import { CommonModule } from '@angular/common';
 import { of } from 'rxjs';
+import { HttpClientModule } from '@angular/common/http';
 
 describe('AutocompleteCitiesComponent', () => {
   let component: AutocompleteCitiesComponent;
@@ -17,8 +18,12 @@ describe('AutocompleteCitiesComponent', () => {
     );
 
     await TestBed.configureTestingModule({
-      declarations: [AutocompleteCitiesComponent, LoadingSpinnerComponent],
-      imports: [CommonModule],
+      imports: [
+        CommonModule,
+        HttpClientModule,
+        AutocompleteCitiesComponent,
+        LoadingSpinnerComponent,
+      ],
       providers: [
         {
           provide: AutocompleteCitiesService,
@@ -50,6 +55,8 @@ describe('AutocompleteCitiesComponent', () => {
   });
 
   it('should update input value on handleInput', () => {
+    fixture.detectChanges(); // Add this line
+
     const inputElement = fixture.nativeElement.querySelector('input');
     const inputValue = 'City 1';
 
